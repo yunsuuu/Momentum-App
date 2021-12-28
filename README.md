@@ -1,2 +1,2 @@
-# TIL
+# JS log
 Today I Learned

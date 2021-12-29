@@ -4,7 +4,6 @@
 // login-form의 <input> <button> 찾는 코드
 // const loginInput = loginForm.querySelector("input");
 // const loginBtn = loginForm.querySelector("button");
-// -----------------------------------------------------
 
 
 // 아래 코드를 더 간단하게 (원하는 element 바로 찾기)
@@ -41,7 +40,6 @@ if(savedUsername === null){
 } else {
     paintGreetings(savedUsername);
 }
-
 
 // onBlur --> event
 // onmouse --> event

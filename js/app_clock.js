@@ -1,7 +1,7 @@
 const clock = document.querySelector("h2#clock");
 
 function getClock(){
-    const date = new Date(); //브라우저가 기본 제공하는 한국 표준시
+    const date = new Date(); //콘솔창에서 찾은 한국 표준시
     const hours = String(date.getHours()).padStart(2, "0");
     const minutes = String(date.getMinutes()).padStart(2, "0");
     const seconds = String(date.getSeconds()).padStart(2, "0");

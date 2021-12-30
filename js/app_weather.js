@@ -15,7 +15,6 @@ function onGeoOk(position) {
         city.innerText = `My current location is ${data.name}`;
     })
 }
-// weather, city innerText color 변경
 
 function onGeoError() {
     alert("Can't find you!");

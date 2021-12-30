@@ -1,6 +1,6 @@
 const quotes = [
     {
-        line: "The greatest thing you'll ever learn is just to love and be loved in returnsssssssssss",
+        line: "The greatest thing you'll ever learn is just to love and be loved in return",
         movie: " - Moulin Rouge"
     },
     {
@@ -12,7 +12,7 @@ const quotes = [
         movie: " - Lion King",
     },
     {
-        line: "Carpe Diem, Seize the day. Make your lives extraordinary.",
+        line: "Carpe Diem, Seize the day. Make your lives extraordinary",
         movie: " - Dead Poets Society",
     },
     {

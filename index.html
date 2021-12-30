@@ -8,6 +8,7 @@
     <title>My First JS App</title>
 </head>
 <body>
+    <h1 id="greeting" class="hidden"></h1>
     <form id="login-form" class="hidden">
         <input
         required 
@@ -16,16 +17,18 @@
         placeholder="What is your name?">
         <input type="submit" value="Log In">
     </form>
-    <h1 id="greeting" class="hidden"></h1>
-
+    <form id="logout-form" class="hidden">
+        <input type="submit" value="Log Out">
+    </form>
+    
     <div id="clock-div">
-        <h1 id="date">0000/00/00</h1>
+        <h3 id="today">0000/00/00</h3>
         <h2 id="clock">00:00:00</h2>
         <p id="clock-text">Everyday is my birthday!</p>
     </div>
 
     <div id="todo-div">
-        <h3 id="todo-title">List For Today</h3>
+        <p id="todo-title">List For Today</p>
         <form id="todo-form">
             <input 
             type="text" 

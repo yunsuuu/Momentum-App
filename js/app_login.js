@@ -14,7 +14,7 @@ function onLoginSubmit(event){
     paintGreetings(username);
 }
 
-function onLogoutSubmit(){
+function onLogoutClick(){
     localStorage.removeItem(USERNAME_KEY);
 }
 
@@ -25,7 +25,7 @@ function paintGreetings(username){
 }
 
 loginForm.addEventListener("submit", onLoginSubmit);
-logoutForm.addEventListener("submit", onLogoutSubmit);
+logoutForm.addEventListener("click", onLogoutClick);
 
 // 기존 유저인 경우(유저네임 확인법)
 const savedUsername = localStorage.getItem(USERNAME_KEY);

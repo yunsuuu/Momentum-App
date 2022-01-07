@@ -1,9 +1,11 @@
+// console.log(typeof li.id); -> li.id 타입이 string인지 number인지 확인
+
 const toDoForm = document.getElementById("todo-form");
 const toDoInput = document.querySelector("#todo-form input");
 const clearAll = document.querySelector(".clear-all");
 const toDoList = document.getElementById("todo-list");
 
-const TODOS_KEY = "todos"; // string이 2번 반복되니 변수로 만들어줌
+const TODOS_KEY = "todos";
 
 let toDos = [];
 
@@ -12,13 +14,12 @@ function saveToDos() {
     localStorage.setItem(TODOS_KEY, JSON.stringify(toDos));
 }
 
-function deleteToDo(e) {
-    // const li = event.currentTarget; // 어떤 버튼을 삭제해야 하는지 저장
-    console.log(e);
-    // console.log(typeof li.id); // li.id 타입이 string인지 number인지 확인
+function deleteToDo(event) {
+    const li = event.target.parentElement.parentElement; // 부모요소 찾기
     li.remove();
     toDos = toDos.filter((toDo) => toDo.id !== parseInt(li.id));
-    saveToDos(); // 삭제한 후 saveToDos() 때문에 새로고침해도 원상태로 안 돌아감
+    saveToDos(); 
+    // saveToDos() 때문에 리스트 하나를 삭제한 상태에서 새로고침해도 최신상태 유지
 }
 
 // input창에 입력값을 화면에 그려주는 함수
@@ -27,17 +28,22 @@ function paintToDo(newTodo) {
     li.id = newTodo.id;
     const emptyBox = document.createElement("button");
     emptyBox.innerHTML = `<i class="far fa-square"></i>`;
-    emptyBox.classList.add('active');
     const span = document.createElement("span");
     span.innerText = newTodo.text;
     const deleteBtn = document.createElement("button");
     deleteBtn.innerHTML = `<i class="fas fa-times"></i>`;
-    // deleteBtn.innerHTML = "X";
     deleteBtn.addEventListener("click", deleteToDo);
     li.appendChild(emptyBox);
     li.appendChild(span);
     li.appendChild(deleteBtn);
     toDoList.appendChild(li);
+
+    emptyBox.addEventListener("click", function(e){
+        const li = e.target.parentElement.parentElement;
+        emptyBox.innerHTML = `<i class="far fa-check-square cancel"></i>`;
+        span.classList.add('cancel');
+        deleteBtn.innerHTML = `<i class="fas fa-times cancel"></i>`;
+    })
 }
 
 // 사용자가 input창에 데이터 입력 > 엔터친 후 발생하는 함수

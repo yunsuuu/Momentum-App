@@ -4,61 +4,85 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
-    />
-    <link rel="stylesheet" href="css/style.css">
-    <title>My First JS App</title>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/> -->
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/todo.css">
+    <title>Yun's App</title>
 </head>
 <body>
-    <h1 id="greeting" class="hidden"></h1>
-    <form id="login-form" class="hidden">
-        <input
-        required 
-        maxlength="15"
-        type="text" 
-        placeholder="What is your name?">
-        <input type="submit" value="Log In">
-    </form>
-    <form id="logout-form" class="hidden">
-        <input type="submit" value="Log Out">
-    </form>
-    
-    <div id="clock-div">
-        <h3 id="today">0000/00/00</h3>
-        <h2 id="clock">00:00:00</h2>
-        <p id="clock-text">Everyday is my birthday!</p>
-    </div>
+  <!-- login -->
+  <h1 id="greeting" class="hidden"></h1>
+  <form id="login-form" class="hidden">
+      <input
+      required 
+      maxlength="15"
+      type="text" 
+      placeholder="What is your name?">
+      <input type="submit" value="Log In">
+  </form>
+  <form id="logout-form" class="hidden">
+      <input type="submit" value="Log Out">
+  </form>
 
-    <div id="todo-div">
-        <p id="todo-title">List For Today</p>
-        <div class="button-all">
-            <button type="button" class="clear-all">Clear All</button>
+  <!-- clock -->
+  <div id="clock-div">
+      <h3 id="today">0000/00/00</h3>
+      <h2 id="clock">00:00:00</h2>
+      <p id="clock-text">Everyday is my birthday!</p>
+  </div>
+
+  <!-- todo-list -->
+  <div id="todo-wrapper">
+    <div id="todo-title">List for</div>
+    <div id="todo-box">
+      <div id="todo-input-box">
+        <button id="complete-all-btn">✔</button>
+        <input id="todo-input" type="text" placeholder="write what to do">
+      </div>
+      <ul id="todo-list">
+        <!-- 완료된 일 -->
+        <!-- <li class="todo-item">
+          <div class="checkbox">✔</div>
+          <div class="todo">a</div>
+          <button class="delBtn">x</button>
+          <input class="edit-input" type="text">
+        </li> -->
+        <!-- 완료되지 않은 일 -->
+        <!-- <li class="todo-item">
+          <div class="checkbox"></div>
+          <div class="todo">b</div>
+          <button class="delBtn">x</button>
+        </li> -->
+      </ul>
+      <div id="todo-bottom">
+        <div id="left-items">0 items left!</div>
+        <div id="button-group">
+          <button id="show-all-btn" data-type="all">All</button>
+          <button id="show-active-btn" data-type="active">Active</button>
+          <button id="show-completed-btn" data-type="completed">Completed</button>
         </div>
-        <form id="todo-form">
-            <input 
-            type="text" 
-            placeholder="Write what to do"
-            required>
-        </form>
-        <ul id="todo-list"></ul>
+        <button id="clear-completed-btn">Clear Completed</button>
+      </div>
     </div>
+  </div>
 
-    <div id="quotes">
-        <span></span>
-        <span></span>
-    </div>
+  <div id="quotes">
+      <span></span>
+      <span></span>
+  </div>
 
-    <div id="weather">
-        <span></span>
-        <br>
-        <span></span>
-    </div>
+  <div id="weather">
+      <span></span>
+      <br>
+      <span></span>
+  </div>
 
-    <script src="js/app_login.js"></script>
-    <script src="js/app_clock.js"></script>
-    <script src="js/app_quotes.js"></script>
-    <script src="js/app_bg.js"></script>
-    <script src="js/app_todo.js"></script>
-    <script src="js/app_weather.js"></script>
+<script src="js/app_login.js"></script>
+<script src="js/app_clock.js"></script>
+<script src="js/app_quotes.js"></script>
+<script src="js/app_bg.js"></script>
+<script src="js/app_todo.js"></script>
+<script src="js/app_weather.js"></script>
 </body>
 </html>

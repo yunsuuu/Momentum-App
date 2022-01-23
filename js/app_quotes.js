@@ -47,6 +47,3 @@ const todaysQuote = quotes[Math.floor(Math.random()*quotes.length)];
 
 line.innerText = todaysQuote.line;
 movie.innerText = todaysQuote.movie;
-
-
-

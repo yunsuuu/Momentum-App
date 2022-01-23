@@ -18,7 +18,7 @@ function onLogoutClick(){
     localStorage.removeItem(USERNAME_KEY);
 }
 
-// username이 localStorage에 저장 -> 화면에 보이는 함수
+// username이 localStorage에 저장된 경우 -> 화면에 보이는 함수
 function paintGreetings(username){
     greeting.innerText = `Hello! ${username} :)`;
     greeting.classList.remove(HIDDEN_CLASSNAME);

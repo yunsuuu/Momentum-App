@@ -11,7 +11,6 @@
 body {
     font-family: 'NanumSquare';
     color: #fff;
-    height: 1500px;
     letter-spacing: 1px;
 }
 
@@ -29,7 +28,7 @@ body {
 }
 
 #clock-div {
-    margin-top: 10%;
+    margin-top: 250px;
     text-align: center;
     font-family: 'Nanum Brush Script';
 }
@@ -49,19 +48,19 @@ body {
 }
 
 #quotes {
-    display: inline-block;
-    position: fixed;
-    left: 30px;
-    bottom: 30px;
+    position: absolute;
+    left: 50%;
+    bottom: 4%;
+    transform:translate(-50%, -4%);
     color: rgba(255, 255, 255, 0.7);
     font-size: .9rem;
 }
 
 #weather {
     display: inline-block;
-    position: fixed;
-    top: 30px;
-    right: 30px;
+    position: absolute;
+    top: 40px;
+    right: 40px;
 }
 
 #weather span {

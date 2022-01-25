@@ -1,12 +1,13 @@
 const completeAllBtn = document.querySelector("#complete-all-btn");
 const toDoInput = document.querySelector("#todo-input");
 const toDoList = document.querySelector("#todo-list");
+const toDoBottomBtn = document.querySelector("#todo-bottom");
 const leftItems = document.querySelector("#left-items");
 const showAllBtn = document.querySelector("#show-all-btn");
 const showActvieBtn = document.querySelector("#show-active-btn");
 const showCompletedBtn = document.querySelector("#show-completed-btn");
 const clearCompletedBtn = document.querySelector("#clear-completed-btn");
-const ITEMS_KEY = "todos_key"; // localStorage key name
+const ITEMS_KEY = "todos_key";
 
 let todos = [];
 let id = 0;
@@ -21,12 +22,11 @@ function saveTodos(){
   localStorage.setItem(ITEMS_KEY, JSON.stringify(todos));
 }
 
-const savedTodos = localStorage.getItem(ITEMS_KEY); // 배열 찾기
-const parsedTodos = JSON.parse(savedTodos); // 찾은 배열을 json 객체로 변환
+const savedTodos = localStorage.getItem(ITEMS_KEY);
+const parsedTodos = JSON.parse(savedTodos);
 
-if(savedTodos){ // localStorage에 배열이 있다면
+if(savedTodos){
   todos = parsedTodos; 
-  // 기존 배열은 json 객체로 변환한 localStorage에 있던 배열에서 가지고 옴
   parsedTodos.forEach(paintTodos);
 }
 
@@ -70,7 +70,6 @@ function onDbclickTodo(e, todoId){
 
   function onClickBody(e){
     if(e.target !== editInput){ 
-      // 이벤트가 발생한 곳이 new input이 아니라면(body를 클릭한 경우가 맞다면)
       todoItemElem.removeChild(editInput);
       document.body.removeEventListener("click", onClickBody);
     }
@@ -80,7 +79,8 @@ function onDbclickTodo(e, todoId){
   todoItemElem.appendChild(editInput);
 }
 
-let isAllCompleted = false; // 전체 todos 체크 여부
+ // 전체 todos 체크 여부
+let isAllCompleted = false;
 const setIsAllCompleted = (bool) => { isAllCompleted = bool };
 
 function completeAll(){
@@ -129,35 +129,14 @@ function checkIsAllCompleted(){
 
 // 남은 할 일 개수
 function setLeftItems(){
-  const leftTodos = getActiveTodos(); // 아직 완료 전인 list
+  const leftTodos = getActiveTodos(); 
   leftItems.innerHTML = `${leftTodos.length} items left`;
-}
-
-let currentShowType = 'all';
-function setCurrentShowType(newShowType){
-  currentShowType = newShowType;
-} 
-
-function onClickShowTodosType(e){
-  const currentBtn = e.target;
-  const newShowType = currentBtn.dataset.type;
-
-  if(currentShowType === newShowType) return;
-
-  const preBtn = document.querySelector(`#show-${currentShowType}-btn`);
-  preBtn.classList.remove("selected");
-  
-  currentBtn.classList.add("selected");
-  setCurrentShowType(newShowType);
-
-  // saveTodos();
-  paintTodo();
 }
 
 // Clear Completed btn 클릭시 발생하는 함수(완료체크된 아이템들 일괄삭제)
 function onClickClearCompleted(){
   const newTodos = getActiveTodos();
-  
+
   setTodos(newTodos);
   saveTodos();
   paintTodo();
@@ -191,6 +170,29 @@ function deleteTodo(todoId){
   setTodos(newTodos);
   saveTodos();
   setLeftItems();
+  paintTodo();
+}
+
+// all, active, complete
+let currentShowType = 'all';
+
+function setCurrentShowType(newShowType){
+  currentShowType = newShowType;
+} 
+
+// all, active, complete btn 클릭시 발생하는 함수
+function onClickShowTodosType(e){
+  const currentBtn = e.target;
+  const newShowType = currentBtn.dataset.type;
+
+  if(currentShowType === newShowType) return;
+
+  const preBtn = document.querySelector(`#show-${currentShowType}-btn`);
+  preBtn.classList.remove("selected");
+  
+  currentBtn.classList.add("selected");
+  setCurrentShowType(newShowType);
+
   paintTodo();
 }
 
@@ -238,6 +240,8 @@ function paintTodos(item){
     checkBox.innerText = "✔";
   }
 
+  if(ITEMS_KEY.value === [])
+
   toDoItem.appendChild(checkBox);
   toDoItem.appendChild(toDo);
   toDoItem.appendChild(delBtn);
@@ -250,6 +254,7 @@ function init(){
     if(e.key === "Enter"){
       appendTodos(e.target.value);
       toDoInput.value = "";
+      toDoInput.focus();
     }
   })
 
